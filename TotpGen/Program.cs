@@ -28,6 +28,7 @@ namespace TotpCodeGenerator
             Console.WriteLine($"Writing 2fa code to: {totpPath}");
             Console.WriteLine($"Using secret: {secret}");
             Console.WriteLine($"Totp Token = {totpToken}");
+            Console.ReadKey();
 #endif
 
             File.WriteAllText(totpPath, totpToken);
