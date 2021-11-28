@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "TotpCodeGenerator": {
+      "commandName": "Project",
+      "commandLineArgs": "secret=abcdefghijklmnopqrstuvwxyz"
+    }
+  }
+}
