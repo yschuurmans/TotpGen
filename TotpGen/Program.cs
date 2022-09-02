@@ -10,7 +10,7 @@ namespace TotpCodeGenerator
     {
         static void Main(string[] args)
         {
-            string totpPath = Path.Combine(Path.GetTempPath(), "totp.txt");
+            string totpPath = "";
             string secret = @"secret";
 
             var dictionary = args.Select(a => a.Split(new[] { '=' }, 2))
@@ -24,14 +24,17 @@ namespace TotpCodeGenerator
             var totp = new Totp(Base32Encoding.ToBytes(secret));
             var totpToken = totp.ComputeTotp();
 
-#if DEBUG
-            Console.WriteLine($"Writing 2fa code to: {totpPath}");
-            Console.WriteLine($"Using secret: {secret}");
-            Console.WriteLine($"Totp Token = {totpToken}");
-            Console.ReadKey();
-#endif
-
-            File.WriteAllText(totpPath, totpToken);
+//#if DEBUG
+//            Console.WriteLine($"Writing 2fa code to: {totpPath}");
+//            Console.WriteLine($"Using secret: {secret}");
+//            Console.WriteLine($"Totp Token = {totpToken}");
+//            Console.ReadKey();
+//#endif
+            if (!String.IsNullOrWhiteSpace(totpPath))
+            {
+                File.WriteAllText(totpPath, totpToken);
+            }
+            Console.Write(totpToken);
         }
     }
 }
